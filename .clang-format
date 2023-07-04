@@ -1,0 +1,6 @@
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 0
+AllowShortIfStatementsOnASingleLine: Never  # IF语句只有一行表达式时是否变成一行
+AllowShortLoopsOnASingleLine: False  # 取消循环折叠
+AllowShortFunctionsOnASingleLine: None  # 函数内只有一行表达式时是否变成单行

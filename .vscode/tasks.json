@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceFolder}\\build"
+    },
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "clean",
+            "command": "rm",
+            "args": [
+                "*",
+                "-r"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "cmake",
+            "command": "cmake",
+            "args": [
+                "..",
+                "-G",
+                 "MinGW Makefiles"
+            ],
+            "dependsOn" : [
+                "clean"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "make",
+            "args": [
+                
+            ],
+            "dependsOn" : [
+                "cmake"
+            ]
+        },
+        {
+            "label": "Build",
+            "dependsOn" : [
+                "make"
+            ]
+        }
+    ]
+}
