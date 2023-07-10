@@ -1,3 +1,4 @@
 .cache/clangd/index
 .idea
 cmake-build-debug-cpp
+compile_commands.json
