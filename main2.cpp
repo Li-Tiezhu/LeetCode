@@ -6,35 +6,23 @@ using namespace std;
 
 class Solution {
    public:
-    int findMaxForm(vector<string>& strs, int m, int n) {
-        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));  // 默认初始化0
-        for (string str : strs) {                              // 遍历物品
-            int oneNum = 0, zeroNum = 0;
-            for (char c : str) {
-                if (c == '0')
-                    zeroNum++;
-                else
-                    oneNum++;
-            }
-            for (int i = m; i >= zeroNum; i--) {  // 遍历背包容量且从后向前遍历！
-                for (int j = n; j >= oneNum; j--) {
-                    dp[i][j] = max(dp[i][j], dp[i - zeroNum][j - oneNum] + 1);
+    int climbStairs(int n) {
+        vector<int> dp(n + 1, 0);
+        dp[0] = 1;
+        for (int j = 1; j <= n; j++) {
+            for (int i = 1; i <= 2; i++) {
+                if (j >= i) {
+                    dp[j] += dp[j - i];
                 }
             }
         }
-        return dp[m][n];
+        return dp[n];
     }
 };
 
 int main() {
     Solution s;
-    vector<string> weight({"10", "0001",
-                           "111001",
-                           "1",
-                           "0"});
-    // vector<string> weight({"10",
-    //                        "0",
-    //                        "1"});
-    int ret = s.findMaxForm(weight, 5, 3);
+    vector<int> coins({1, 2, 3});
+    int ret = s.climbStairs(3);
     cout << ret << endl;
 };
